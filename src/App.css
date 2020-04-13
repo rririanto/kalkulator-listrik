@@ -1,0 +1,39 @@
+@import "~antd/dist/antd.css";
+
+
+.site-card-wrapper {
+  background: #ececec;
+  padding: 30px;
+}
+
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
+}
+
+#components-layout-demo-top .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.link-button {
+  color: #1890ff;
+  background-color: transparent;
+  border: none;
+  outline:none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+
+.link-button:hover,
+.link-button:focus {
+text-decoration: none;
+}
