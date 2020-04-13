@@ -24,7 +24,7 @@ class App extends Component {
       const rates = this.state.rates;
       const kwh = total / 1000;
       const dailyKwh = kwh * 1;
-      const monthlyKwh = parseInt(kwh * 30);
+      const monthlyKwh = parseInt(kwh * 30)
       const yearlyKwh = parseInt(kwh * 365);
       const dailyRate = dailyKwh * rates;
       const monthlyRate = monthlyKwh * rates;
@@ -60,8 +60,8 @@ class App extends Component {
   removeItems = (index) => {
     const items = this.state.dataItem.filter((item) => item.id !== index);
     items.map((item, index) => (item.id = index));
-    this.setState({ dataItem: items });
-    this.setState({ result: {} });
+    this.setState({ dataItem: items});
+    this.setState({ result: {}});
     this.calculateRate(items);
   };
 
@@ -72,38 +72,22 @@ class App extends Component {
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
-              <a target="_blank" rel="noopener noreferrer" href="/">
-                Home
-              </a>
+               <a target="_blank" rel="noopener noreferrer" href="/">Home</a>
             </Menu.Item>
             <Menu.Item key="2">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://pln.co.id"
-              >
-                Situs PLN
-              </a>
+               <a target="_blank" rel="noopener noreferrer" href="https://pln.co.id">Situs PLN</a>
             </Menu.Item>
-            <Menu.Item key="3">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/jimmyromanticdevil/kalkulator-listrik"
-              >
-                Github
-              </a>
-            </Menu.Item>
+            <Menu.Item key="3"><a target="_blank" rel="noopener noreferrer" href="https://github.com/jimmyromanticdevil/kalkulator-listrik">Github</a></Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ padding: "20px 50px" }}>
-          <div className="site-layout-content">
+        <Content style={{ margin: '24px 16px 0'}}>
+          <div className="site-layout-content" style={{ padding: 24 }}>
             <FormSettings onSubmit={this.electricityRates} />
             <Divider dashed />
             <FormItems onSubmit={this.addNewProfile} />
           </div>
           <div className="site-card-wrapper">
-            <Row gutter={[18, 24]}>
+            <Row gutter={[10, 10]}>
               {this.state.dataItem.map((item) => (
                 <CardList
                   removeItems={this.removeItems}
@@ -114,8 +98,8 @@ class App extends Component {
             </Row>
           </div>
         </Content>
-        <Content style={{ padding: "0 50px" }}>
-          <div className="site-layout-content">
+        <Content style={{ margin: '24px 16px 0'}}>
+          <div className="site-layout-content" style={{ padding: 24 }}>
             <Details result={this.state.result} />
           </div>
         </Content>
