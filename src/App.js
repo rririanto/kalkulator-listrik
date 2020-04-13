@@ -24,11 +24,11 @@ class App extends Component {
       const rates = this.state.rates;
       const kwh = total / 1000;
       const dailyKwh = kwh * 1;
-      const monthlyKwh = parseInt(kwh * 30)
+      const monthlyKwh = parseInt(kwh * 30);
       const yearlyKwh = parseInt(kwh * 365);
-      const dailyRate = dailyKwh * rates;
-      const monthlyRate = monthlyKwh * rates;
-      const yearlyRate = yearlyKwh * rates;
+      const dailyRate = patseInt(dailyKwh * rates);
+      const monthlyRate = parseInt(monthlyKwh * rates);
+      const yearlyRate = parseInt(yearlyKwh * rates);
       this.setState({
         result: {
           total,
