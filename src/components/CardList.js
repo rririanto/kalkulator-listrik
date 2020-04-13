@@ -9,7 +9,7 @@ class CardList extends Component {
   render() {
     const item = this.props;
     return (
-      <Col className="gutter-row" span={[18, 24]}>
+      <Col xs={24} sm={20} md={8} lg={8} xl={6}>
         <Card
           title={item.itemName}
           bordered={false}

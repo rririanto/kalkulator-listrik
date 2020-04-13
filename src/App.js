@@ -87,7 +87,7 @@ class App extends Component {
             <FormItems onSubmit={this.addNewProfile} />
           </div>
           <div className="site-card-wrapper">
-            <Row gutter={[10, 10]}>
+            <Row gutter={[18, 24]}>
               {this.state.dataItem.map((item) => (
                 <CardList
                   removeItems={this.removeItems}
