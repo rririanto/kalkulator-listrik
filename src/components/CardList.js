@@ -19,7 +19,7 @@ class CardList extends Component {
             </button>
           }
         >
-          {item.itemWatt} Watt, bekerja selama {item.itemHour} Jam
+          Daya {item.itemWatt} Wh, bekerja selama {item.itemHour} jam per hari
         </Card>
       </Col>
     );
