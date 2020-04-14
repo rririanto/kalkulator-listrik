@@ -26,7 +26,7 @@ class App extends Component {
       const dailyKwh = kwh * 1;
       const monthlyKwh = parseInt(kwh * 30);
       const yearlyKwh = parseInt(kwh * 365);
-      const dailyRate = patseInt(dailyKwh * rates);
+      const dailyRate = parseInt(dailyKwh * rates);
       const monthlyRate = parseInt(monthlyKwh * rates);
       const yearlyRate = parseInt(yearlyKwh * rates);
       this.setState({
@@ -53,8 +53,11 @@ class App extends Component {
   };
 
   electricityRates = (props) => {
-    this.setState({ rates: props.rates });
-    this.calculateRate(this.state.dataItem);
+    this.setState({ 
+      rates: props.rates }, 
+      () => this.calculateRate(this.state.dataItem)
+    )
+
   };
 
   removeItems = (index) => {

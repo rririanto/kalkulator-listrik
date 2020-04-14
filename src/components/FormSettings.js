@@ -23,9 +23,11 @@ class FormSettings extends Component {
   };
 
   handleChange = (value) => {
-    this.setState({ rates: value }, function () {
-      this.props.onSubmit(this.state);
-    });
+    this.setState({ 
+      rates: value }, 
+      () => this.props.onSubmit(this.state)
+    )
+
   };
 
   render() {
@@ -36,7 +38,7 @@ class FormSettings extends Component {
             min={1}
             name="rates"
             value={this.state.rates}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
           <span className="ant-form-text"> Rp/kWh</span>
           <Tooltip title="Info tentang jenis tarif listrik">
