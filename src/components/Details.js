@@ -24,13 +24,13 @@ const Details = (props) => (
         Rp. {props.result.rates || 0}
       </Descriptions.Item>
       <Descriptions.Item label="Total biaya listrik per-hari">
-        Rp. {props.result.dailyRate || 0}
+        {props.result.dailyRate || 0}
       </Descriptions.Item>
       <Descriptions.Item label="Total biaya listrik per-bulan">
-        Rp. {props.result.monthlyRate || 0}
+        {props.result.monthlyRate || 0}
       </Descriptions.Item>
       <Descriptions.Item label="Total biaya listrik per-tahun">
-        Rp. {props.result.yearlyRate || 0}
+        {props.result.yearlyRate || 0}
       </Descriptions.Item>
     </Descriptions>
   </div>

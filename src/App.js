@@ -15,20 +15,29 @@ class App extends Component {
     result: {},
   };
 
+  formatCurrency = (props) => new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumSignificantDigits: 2
+    }).format(parseFloat(props).toFixed(2)); 
+  
+
   calculateRate = (props) => {
     if (props.length >= 1 && this.state.rates > 0) {
       const total = props.reduce(
         (prev, next) => prev + next.itemWatt * next.itemHour,
         0
       );
-      const rates = this.state.rates;
+      const rates = this.formatCurrency(this.state.rates);
       const kwh = total / 1000;
       const dailyKwh = kwh * 1;
       const monthlyKwh = parseFloat(dailyKwh * 30).toFixed(2);
       const yearlyKwh = parseFloat(monthlyKwh * 12).toFixed(2);
-      const dailyRate = parseFloat(dailyKwh * rates).toFixed(2);
-      const monthlyRate = parseFloat(dailyRate * 30).toFixed(2);
-      const yearlyRate = parseFloat(monthlyRate * 12).toFixed(2);
+      const baseDailyRate = parseFloat(dailyKwh * rates).toFixed(2);
+      const dailyRate = this.formatCurrency(baseDailyRate);
+      const monthlyRate = this.formatCurrency(baseDailyRate * 30);
+      const yearlyRate = this.formatCurrency(baseDailyRate * 360);
+
       this.setState({
         result: {
           total,
@@ -53,18 +62,19 @@ class App extends Component {
   };
 
   electricityRates = (props) => {
-    this.setState({ 
-      rates: props.rates }, 
+    this.setState(
+      {
+        rates: props.rates,
+      },
       () => this.calculateRate(this.state.dataItem)
-    )
-
+    );
   };
 
   removeItems = (index) => {
     const items = this.state.dataItem.filter((item) => item.id !== index);
     items.map((item, index) => (item.id = index));
-    this.setState({ dataItem: items});
-    this.setState({ result: {}});
+    this.setState({ dataItem: items });
+    this.setState({ result: {} });
     this.calculateRate(items);
   };
 
@@ -75,15 +85,31 @@ class App extends Component {
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
-               <a target="_blank" rel="noopener noreferrer" href="/">Home</a>
+              <a target="_blank" rel="noopener noreferrer" href="/">
+                Home
+              </a>
             </Menu.Item>
             <Menu.Item key="2">
-               <a target="_blank" rel="noopener noreferrer" href="https://pln.co.id">Situs PLN</a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://pln.co.id"
+              >
+                Situs PLN
+              </a>
             </Menu.Item>
-            <Menu.Item key="3"><a target="_blank" rel="noopener noreferrer" href="https://github.com/jimmyromanticdevil/kalkulator-listrik">Github</a></Menu.Item>
+            <Menu.Item key="3">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/jimmyromanticdevil/kalkulator-listrik"
+              >
+                Github
+              </a>
+            </Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ margin: '24px 16px 0'}}>
+        <Content style={{ margin: "24px 16px 0" }}>
           <div className="site-layout-content" style={{ padding: 24 }}>
             <FormSettings onSubmit={this.electricityRates} />
             <Divider dashed />
@@ -101,7 +127,7 @@ class App extends Component {
             </Row>
           </div>
         </Content>
-        <Content style={{ margin: '24px 16px 0'}}>
+        <Content style={{ margin: "24px 16px 0" }}>
           <div className="site-layout-content" style={{ padding: 24 }}>
             <Details result={this.state.result} />
           </div>
