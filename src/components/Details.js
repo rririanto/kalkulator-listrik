@@ -21,7 +21,7 @@ const Details = (props) => (
         {props.result.yearlyKwh || 0} kWh
       </Descriptions.Item>
       <Descriptions.Item label="Tarif listrik per-Kwh">
-        Rp. {props.result.rates || 0}
+        {props.result.rates || 0}
       </Descriptions.Item>
       <Descriptions.Item label="Total biaya listrik per-hari">
         {props.result.dailyRate || 0}
