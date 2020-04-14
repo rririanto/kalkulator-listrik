@@ -14,13 +14,9 @@ class FormSettings extends Component {
   constructor() {
     super();
     this.state = {
-      rates: 1450,
+      rates: 1467,
     };
   }
-
-  handleSubmit = async (e) => {
-    console.log("pass");
-  };
 
   handleChange = (value) => {
     this.setState({ 
@@ -32,7 +28,7 @@ class FormSettings extends Component {
 
   render() {
     return (
-      <Form {...layout} onFinish={this.handleSubmit} size="middle">
+      <Form {...layout} size="middle">
         <Form.Item label="Tarif listrik Anda per-kWh">
           <InputNumber
             min={1}

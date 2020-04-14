@@ -11,7 +11,7 @@ const { Header, Content } = Layout;
 class App extends Component {
   state = {
     dataItem: [],
-    rates: 1450,
+    rates: 1467,
     result: {},
   };
 
