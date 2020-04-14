@@ -4,9 +4,10 @@ import FormSettings from "./components/FormSettings";
 import CardList from "./components/CardList";
 import FormItems from "./components/FormItems";
 import Details from "./components/Details";
-import { Layout, Menu, Row, Divider } from "antd";
+import HeaderMenu from "./components/Header";
+import { Layout, Row, Divider } from "antd";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 class App extends Component {
   state = {
@@ -80,34 +81,7 @@ class App extends Component {
   render() {
     return (
       <Layout className="layout">
-        <Header>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <a target="_blank" rel="noopener noreferrer" href="/">
-                Home
-              </a>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://pln.co.id"
-              >
-                Situs PLN
-              </a>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/jimmyromanticdevil/kalkulator-listrik"
-              >
-                Github
-              </a>
-            </Menu.Item>
-          </Menu>
-        </Header>
+        <HeaderMenu/>
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="site-layout-content" style={{ padding: 24 }}>
             <FormSettings onSubmit={this.electricityRates} />
