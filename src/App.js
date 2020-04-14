@@ -16,11 +16,11 @@ class App extends Component {
     result: {},
   };
 
-  formatCurrency = (props) => new Intl.NumberFormat("id-ID", {
+  formatCurrency = (props) =>
+    new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
-    }).format(parseFloat(props).toFixed(2)); 
-  
+    }).format(parseFloat(props).toFixed(2));
 
   calculateRate = (props) => {
     if (props.length >= 1 && this.state.rates > 0) {
@@ -37,7 +37,7 @@ class App extends Component {
       const dailyRate = this.formatCurrency(baseDailyRate);
       const monthlyRate = this.formatCurrency(baseDailyRate * 30);
       const yearlyRate = this.formatCurrency(baseDailyRate * 360);
-      
+
       this.setState({
         result: {
           total,
@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <Layout className="layout">
-        <HeaderMenu/>
+        <HeaderMenu />
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="site-layout-content" style={{ padding: 24 }}>
             <FormSettings onSubmit={this.electricityRates} />

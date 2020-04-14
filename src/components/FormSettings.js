@@ -19,11 +19,11 @@ class FormSettings extends Component {
   }
 
   handleChange = (value) => {
-    this.setState({ 
-      rates: value }, 
+    this.setState({
+        rates: value,
+      },
       () => this.props.onSubmit(this.state)
-    )
-
+    );
   };
 
   render() {
