@@ -47,7 +47,6 @@ class FormItems extends Component {
         </Form.Item>
         <Form.Item label="Daya / Konsumsi listrik">
           <InputNumber
-            min={1}
             name="itemWatt"
             value={this.state.itemWatt}
             onChange={(value) => this.setState({ itemWatt: value })}
@@ -57,7 +56,6 @@ class FormItems extends Component {
         </Form.Item>
         <Form.Item label="Berapa jam per-hari mesin bekerja?">
           <InputNumber
-            min={1}
             max={24}
             name="itemHour"
             value={this.state.itemHour}
