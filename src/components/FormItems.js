@@ -19,20 +19,16 @@ const tailLayout = {
 class FormItems extends Component {
   constructor() {
     super();
-    this.state = { id: 0, itemName: "", itemWatt: 1, itemHour: 1 };
+    this.state = { key: 0, itemName: "", itemWatt: 1, itemHour: 1 };
   }
 
   handleSubmit = async (e) => {
     this.setState((prevState) => ({
-      id: prevState.id + 1,
+      key: prevState.key + 1,
     }));
     this.props.onSubmit(this.state);
     this.setState({ itemName: "", itemWatt: 1, itemHour: 1 });
   };
-
-  //handleChange = (value) => {
-  //  this.setState({itemHour: value})
-  //}
 
   render() {
     return (

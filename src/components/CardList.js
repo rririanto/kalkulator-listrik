@@ -8,6 +8,7 @@ class CardList extends Component {
 
   render() {
     const item = this.props;
+    console.log(item);
     return (
       <Col xs={24} sm={20} md={8} lg={8} xl={6}>
         <Card
@@ -19,7 +20,11 @@ class CardList extends Component {
             </button>
           }
         >
-          Daya {item.itemWatt} Watt, bekerja selama {item.itemHour} jam per hari
+          {item.description}
+          <br />
+          <b>kWh:</b> {item.dailyMonthlyKwh}
+          <br />
+          <b>Biaya kWh:</b> {item.dailyMonthlyKwhRate}
         </Card>
       </Col>
     );

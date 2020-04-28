@@ -19,7 +19,8 @@ class FormSettings extends Component {
   }
 
   handleChange = (value) => {
-    this.setState({
+    this.setState(
+      {
         rates: value,
       },
       () => this.props.onSubmit(this.state)

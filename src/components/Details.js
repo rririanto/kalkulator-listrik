@@ -4,7 +4,7 @@ import { Descriptions } from "antd";
 const Details = (props) => (
   <div>
     <Descriptions
-      title="Hasil Perhitungan"
+      title="Total Semua Item"
       bordered
       column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
     >
