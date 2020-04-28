@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Col } from "antd";
+import { Card, Col, Button } from "antd";
 
 class CardList extends Component {
   remove = () => {
@@ -15,9 +15,9 @@ class CardList extends Component {
           title={item.itemName}
           bordered={false}
           extra={
-            <button type="button" className="link-button" onClick={this.remove}>
+            <Button type="link" danger onClick={this.remove}>
               Hapus
-            </button>
+            </Button>
           }
         >
           {item.description}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Table } from "antd";
+import { Table, Button } from "antd";
 
 class TableList extends Component {
   constructor(props) {
@@ -26,13 +26,13 @@ class TableList extends Component {
         key: "action",
         render: (text, record) => (
           <span>
-            <button
+            <Button type="link" danger
               onClick={(e) => {
                 this.onDelete(record.key, e);
               }}
             >
               Delete
-            </button>
+            </Button>
           </span>
         ),
       },
