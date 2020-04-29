@@ -1,6 +1,6 @@
-@import "~antd/dist/antd.css";
-
-
+body {
+  background-color: #f0f2f5;
+}
 .site-card-wrapper {
   background: #ececec;
   padding: 20px;

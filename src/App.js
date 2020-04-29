@@ -7,7 +7,9 @@ import FormItems from "./components/FormItems";
 import Details from "./components/Details";
 import HeaderMenu from "./components/Header";
 import { Layout, Divider, Row } from "antd";
+
 import { BrowserView, MobileView } from "react-device-detect";
+
 
 const { Content } = Layout;
 
@@ -53,10 +55,9 @@ class App extends Component {
     const result = this.calculateRate(total);
     const dailyMonthlyKwh = `${result.dailyKwh} kWh/hari = ${result.monthlyKwh} kWh/bulan`;
     const dailyMonthlyKwhRate = `${result.dailyRate}/hari = ${result.monthlyRate}/bulan`;
-    delete result.baseDailyRate;
-    delete result.rates;
+    const { baseDailyRate, rates, ...newResultObj } = result;
     return {
-      ...result,
+      ...newResultObj,
       description,
       dailyMonthlyKwh,
       dailyMonthlyKwhRate,
@@ -67,11 +68,13 @@ class App extends Component {
       (prev, next) => prev + next.itemWatt * next.itemHour,
       0
     );
+    
     const result = this.calculateRate(total);
     const yearlyKwh = parseFloat(result.monthlyKwh * 12).toFixed(2);
     const yearlyRate = this.formatCurrency(result.baseDailyRate * 360);
     this.setState({
       result: {
+        ...this.state.result,
         ...result,
         total,
         yearlyKwh,
@@ -82,7 +85,6 @@ class App extends Component {
 
   addNewItem = (formData) => {
     const newFormData = { ...formData, ...this.totalItem(formData) };
-    console.log(newFormData);
     this.setState((prevState) => ({
       dataItem: [...prevState.dataItem, newFormData],
     }));
@@ -106,40 +108,45 @@ class App extends Component {
   };
 
   render() {
+    const { dataItem, result } = this.state;
     return (
       <Layout className="layout">
         <HeaderMenu />
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div className="site-layout-content" style={{ padding: 24 }}>
+        <Content>
+          <div className="site-layout-content" style={{ margin: "20px" }}>
             <FormSettings onSubmit={this.electricityRates} />
             <Divider dashed />
             <FormItems onSubmit={this.addNewItem} />
           </div>
         </Content>
-        <Content style={{ margin: "24px 16px 0" }}>
-          <BrowserView>
-            <TableList
-              data={this.state.dataItem}
-              removeItems={this.removeItems}
-            />
-          </BrowserView>
-          <MobileView>
-            <Row gutter={[18, 24]}>
-              {this.state.dataItem.map((item) => (
-                <CardList
-                  removeItems={this.removeItems}
-                  key={item.key}
-                  {...item}
-                />
-              ))}
-            </Row>
-          </MobileView>
-        </Content>
+        {dataItem.length >=1 && (
+          <Content style={{ margin: "24px 16px 0" }}>
+            <BrowserView>
+              <TableList
+                data={this.state.dataItem}
+                removeItems={this.removeItems}
+              />
+            </BrowserView>
+            <MobileView>
+              <Row gutter={[18, 24]}>
+                {this.state.dataItem.map((item) => (
+                  <CardList
+                    removeItems={this.removeItems}
+                    key={item.key}
+                    {...item}
+                  />
+                ))}
+              </Row>
+            </MobileView>
+          </Content>
+        )}
+        {result.total >= 0 && (
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="site-layout-content" style={{ padding: 24 }}>
             <Details result={this.state.result} />
           </div>
         </Content>
+        )}
       </Layout>
     );
   }
