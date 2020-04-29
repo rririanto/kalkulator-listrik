@@ -8,7 +8,6 @@ class CardList extends Component {
 
   render() {
     const item = this.props;
-    console.log(item);
     return (
       <Col xs={24} sm={20} md={8} lg={8} xl={6}>
         <Card
