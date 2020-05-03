@@ -290,17 +290,17 @@ module.exports = function (webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map((ext) => `.${ext}`)
         .filter((ext) => useTypeScript || !ext.includes("ts")),
-      alias: {
-        // Support React Native Web
-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        "react": "preact/compat",
-        "react-dom/test-utils": "preact/test-utils",
-        "react-dom": "preact/compat",
-        ...(isEnvProductionProfile && {
-          "scheduler/tracing": "scheduler/tracing-profiling",
-        }),
-        ...(modules.webpackAliases || {}),
-      },
+        alias: {
+          // Support React Native Web
+          // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+          'react-native': 'react-native-web',
+          // Allows for better profiling with ReactDevTools
+          ...(isEnvProductionProfile && {
+            'react-dom$': 'react-dom/profiling',
+            'scheduler/tracing': 'scheduler/tracing-profiling',
+          }),
+          ...(modules.webpackAliases || {}),
+        },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
@@ -387,6 +387,7 @@ module.exports = function (webpackEnv) {
                     require.resolve('babel-plugin-import'),
                     {
                         libraryName: 'antd',   
+                        libraryDirectory: "es",
                         style: 'css'
                     }
                 ]
