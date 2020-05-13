@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Form, Input, InputNumber, Button } from "antd";
+
+import Form from 'antd/es/form'; // for js
+import Input from 'antd/es/input/Input'; // for js
+import InputNumber from 'antd/es/input-number'; // for js
+import Button from 'antd/es/button/button'; // for js
+
+import 'antd/es/form/style/css'; // for css
+import 'antd/es/input/style/css'; // for css
+import 'antd/es/input-number/style/css'; // for css
+import 'antd/es/button/style/css'; // for css
 
 const layout = {
   labelCol: {

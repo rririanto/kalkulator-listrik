@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Form, InputNumber, Tooltip } from "antd";
+import Form from 'antd/es/form'; // for js
+import InputNumber from 'antd/es/input-number'; // for js
+import 'antd/es/form/style/css'; // for css
+import 'antd/es/input-number/style/css'; // for css
 
 const layout = {
   labelCol: {
@@ -38,7 +41,6 @@ class FormSettings extends Component {
             onChange={this.handleChange}
           />
           <span className="ant-form-text"> Rp/kWh</span>
-          <Tooltip title="Info tentang jenis tarif listrik">
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -47,7 +49,6 @@ class FormSettings extends Component {
             >
               Butuh Bantuan?
             </a>
-          </Tooltip>
         </Form.Item>
       </Form>
     );

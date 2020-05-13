@@ -3,9 +3,16 @@ import FormSettings from "../components/FormSettings";
 import CardList from "../components/CardList";
 import FormItems from "../components/FormItems";
 import Details from "../components/Details";
-import { Layout, Divider, Row } from "antd";
-import { BrowserView, MobileView } from "react-device-detect";
 
+import Layout from 'antd/es/layout/layout'; // for js
+import Divider from 'antd/es/divider/'; // for js
+import Row from 'antd/es/row/'; // for js
+import 'antd/es/layout/style/css'; // for css
+import 'antd/es/divider/style/css'; // for css
+import 'antd/es/row/style/css'; // for css
+
+import { BrowserView, MobileView } from "react-device-detect";
+import "../App.css";
 const { Content } = Layout;
 
 class HomePage extends Component {

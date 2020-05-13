@@ -383,14 +383,6 @@ module.exports = function (webpackEnv) {
                       },
                     },
                   ],
-                  [
-                    require.resolve('babel-plugin-import'),
-                    {
-                        libraryName: 'antd',   
-                        libraryDirectory: "es",
-                        style: 'css'
-                    }
-                ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -627,6 +619,7 @@ module.exports = function (webpackEnv) {
       // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
       // You can remove this if you don't use Moment.js:
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.IgnorePlugin(/^(mv|rim-raf|source-map-support)$/),
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&

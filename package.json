@@ -137,5 +137,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "inspectpack": "^4.4.0"
   }
 }
