@@ -25,9 +25,8 @@ const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
-
 const postcssNormalize = require("postcss-normalize");
-
+const LoadashModule = require('lodash-webpack-plugin')
 const appPackageJson = require(paths.appPackageJson);
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -294,6 +293,7 @@ module.exports = function (webpackEnv) {
           // Support React Native Web
           // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
           'react-native': 'react-native-web',
+          "@ant-design/icons$": path.resolve(paths.appSrc, "../src/icons.js"),
           // Allows for better profiling with ReactDevTools
           ...(isEnvProductionProfile && {
             'react-dom$': 'react-dom/profiling',
@@ -535,6 +535,21 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
+      isEnvProduction &&
+      new HtmlCriticalWebpackPlugin({
+        base: path.resolve(paths.appSrc, '../build'),
+        src: "index.html",
+        dest: "index.html",
+        inline: true,
+        minify: true,
+        extract: true,
+        width: 375,
+        height: 565,
+        penthouse: {
+          blockJSRequests: true,
+        },
+      }),
+      isEnvProduction && new LoadashModule(),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
@@ -574,20 +589,6 @@ module.exports = function (webpackEnv) {
           // both options are optional
           filename: "static/css/[name].[contenthash:8].css",
           chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
-        }),
-        isEnvProduction &&
-        new HtmlCriticalWebpackPlugin({
-          base: path.resolve(paths.appSrc, '../build'),
-          src: "index.html",
-          dest: "index.html",
-          inline: true,
-          minify: true,
-          extract: true,
-          width: 375,
-          height: 565,
-          penthouse: {
-            blockJSRequests: false,
-          },
         }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
