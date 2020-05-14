@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Card, Col, Button } from "antd";
+
+import Card from 'antd/es/card'; // for js
+import Col from 'antd/es/col'; // for js
+import Button from 'antd/es/button/button'; // for js
+
+import 'antd/es/card/style/css'; // for css
+import 'antd/es/col/style/css'; // for css
+import 'antd/es/button/style/css'; // for css
+
 
 class CardList extends Component {
   remove = () => {

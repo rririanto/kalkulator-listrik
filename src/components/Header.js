@@ -1,5 +1,8 @@
 import React from "react";
-import { Layout, Menu } from "antd";
+import Layout from 'antd/es/layout/layout'; // for js
+import Menu from 'antd/es/menu/'; // for js
+import 'antd/es/layout/style/css'; // for css
+import 'antd/es/menu/style/css'; // for css
 
 const { Header } = Layout;
 

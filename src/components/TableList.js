@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
-import { Table, Button } from "antd";
+import Table from 'antd/es/table'; // for js
+import Button from 'antd/es/button/button'; // for js
+import 'antd/es/table/style/css'; // for css
+import 'antd/es/button/style/css'; // for css
+
 
 class TableList extends Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React from "react";
-import { Descriptions } from "antd";
+import Descriptions from 'antd/es/descriptions'; // for js
+import 'antd/es/descriptions/style/css'; // for css
 
 const Details = (props) => (
   <div>
