@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Loadable from 'react-loadable';
 import Loading from './components/Loading';
 import HeaderMenu from './components/layout/Header'
@@ -11,15 +11,13 @@ const HomePage = Loadable({
   loading: Loading,
 });
 
-class App extends Component {
-  render() {
-    return (
+function App() {
+  return (
       <Layout className="layout">
         <HeaderMenu />
         <HomePage/>
       </Layout>
     );
-  }
 }
 
 export default App;
