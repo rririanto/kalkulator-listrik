@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Form from 'antd/es/form'; // for js
-import InputNumber from 'antd/es/input-number'; // for js
-import 'antd/es/form/style/css'; // for css
-import 'antd/es/input-number/style/css'; // for css
+import Form from "antd/es/form"; // for js
+import InputNumber from "antd/es/input-number"; // for js
+import "antd/es/form/style/css"; // for css
+import "antd/es/input-number/style/css"; // for css
 
 const layout = {
   labelCol: {
@@ -14,12 +14,9 @@ const layout = {
 };
 
 class FormSettings extends Component {
-  constructor() {
-    super();
-    this.state = {
-      rates: 1467,
-    };
-  }
+  state = {
+    rates: 1467,
+  };
 
   handleChange = (value) => {
     this.setState(
@@ -41,14 +38,14 @@ class FormSettings extends Component {
             onChange={this.handleChange}
           />
           <span className="ant-form-text"> Rp/kWh</span>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://id.wikipedia.org/wiki/Tarif_dasar_listrik#Tarif_Tenaga_Listrik_2017"
-              style={{ margin: "0 8px" }}
-            >
-              Butuh Bantuan?
-            </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://id.wikipedia.org/wiki/Tarif_dasar_listrik#Tarif_Tenaga_Listrik_2017"
+            style={{ margin: "0 8px" }}
+          >
+            Butuh Bantuan?
+          </a>
         </Form.Item>
       </Form>
     );

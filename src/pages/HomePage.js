@@ -35,15 +35,12 @@ const Details = Loadable({
 });
 
 class HomePage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      dataItem: [],
-      rates: 1467,
-      result: {},
-      showComponents: false,
-    };
-  }
+  state = {
+    dataItem: [],
+    rates: 1467,
+    result: {},
+    showComponents: false,
+  };
 
   formatCurrency = (props) =>
     new Intl.NumberFormat("id-ID", {
@@ -124,7 +121,10 @@ class HomePage extends Component {
   };
 
   removeItems = (key) => {
-    this.setState({ dataItem: [...this.state.dataItem.filter(item => item.key !== key)], result: {} });
+    this.setState({
+      dataItem: [...this.state.dataItem.filter((item) => item.key !== key)],
+      result: {},
+    });
   };
 
   render() {
