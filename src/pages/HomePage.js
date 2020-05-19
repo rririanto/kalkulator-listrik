@@ -22,9 +22,9 @@ const TableList = Loadable({
   loading: Loading,
 });
 
-const CardList = Loadable({
+const Cards = Loadable({
   loader: () =>
-    import("../components/CardList" /* webpackChunkName: "card-list" */),
+    import("../components/Cards" /* webpackChunkName: "card-list" */),
   loading: Loading,
 });
 
@@ -149,13 +149,7 @@ class HomePage extends Component {
               </BrowserView>
               <MobileView>
                 <Row gutter={[18, 24]}>
-                  {dataItem.map((item) => (
-                    <CardList
-                      removeItems={this.removeItems}
-                      key={item.key}
-                      {...item}
-                    />
-                  ))}
+                  <Cards removeItems={this.removeItems} data={dataItem} />
                 </Row>
               </MobileView>
             </Content>

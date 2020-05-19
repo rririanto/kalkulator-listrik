@@ -9,13 +9,13 @@ import 'antd/es/col/style/css'; // for css
 import 'antd/es/button/style/css'; // for css
 
 
-class CardList extends Component {
+class Cards extends Component {
   remove = () => {
-    this.props.removeItems(this.props.id);
+    this.props.removeItems(this.props.item.key);
   };
 
   render() {
-    const item = this.props;
+    const item = this.props.item;
     return (
       <Col xs={24} sm={20} md={8} lg={8} xl={6}>
         <Card
@@ -38,4 +38,4 @@ class CardList extends Component {
   }
 }
 
-export default CardList;
+export default Cards;
