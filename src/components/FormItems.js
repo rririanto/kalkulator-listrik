@@ -4,7 +4,6 @@ import Form from 'antd/es/form'; // for js
 import Input from 'antd/es/input/Input'; // for js
 import InputNumber from 'antd/es/input-number'; // for js
 import Button from 'antd/es/button/button'; // for js
-
 import 'antd/es/form/style/css'; // for css
 import 'antd/es/input/style/css'; // for css
 import 'antd/es/input-number/style/css'; // for css
@@ -26,18 +25,21 @@ const tailLayout = {
 };
 
 class FormItems extends Component {
-  constructor() {
-    super();
-    this.state = { key: 0, itemName: "", itemWatt: 1, itemHour: 1 };
-  }
+  state = { 
+    key: 0, 
+    itemName: '', 
+    itemWatt: 1, 
+    itemHour: 1
+  };
+  
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     this.setState((prevState) => ({
       key: prevState.key + 1,
     }));
     this.props.onSubmit(this.state);
-    this.setState({ itemName: "", itemWatt: 1, itemHour: 1 });
-  };
+    this.setState({ itemName: '', itemWatt: 1, itemHour: 1 });
+  }; 
 
   render() {
     return (

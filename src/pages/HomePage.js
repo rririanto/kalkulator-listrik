@@ -85,8 +85,8 @@ class HomePage extends Component {
       dailyMonthlyKwhRate,
     };
   };
-  totalAllItem = (props) => {
-    const total = props.reduce(
+  totalAllItem = () => {
+    const total = this.state.dataItem.reduce(
       (prev, next) => prev + next.itemWatt * next.itemHour,
       0
     );
@@ -111,7 +111,7 @@ class HomePage extends Component {
     this.setState((prevState) => ({
       dataItem: [...prevState.dataItem, newFormData],
     }));
-    this.totalAllItem(this.state.dataItem);
+    this.totalAllItem();
   };
 
   electricityRates = (props) => {
@@ -119,15 +119,12 @@ class HomePage extends Component {
       {
         rates: props.rates,
       },
-      () => this.totalAllItem(this.state.dataItem)
+      () => this.totalAllItem()
     );
   };
 
-  removeItems = (index) => {
-    const items = this.state.dataItem.filter((item) => item.key !== index);
-    items.map((item, index) => (item.key = index));
-    this.setState({ dataItem: items, result: {} });
-    this.totalAllItem(items);
+  removeItems = (key) => {
+    this.setState({ dataItem: [...this.state.dataItem.filter(item => item.key !== key)], result: {} });
   };
 
   render() {

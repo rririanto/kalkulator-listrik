@@ -10,19 +10,19 @@ import 'antd/es/button/style/css'; // for css
 
 
 class Cards extends Component {
-  remove = () => {
-    this.props.removeItems(this.props.item.key);
+  remove = (key, removeItems) => {
+    removeItems(key);
   };
 
   render() {
-    const item = this.props.item;
+    const {item, removeItems} = this.props;
     return (
       <Col xs={24} sm={20} md={8} lg={8} xl={6}>
         <Card
           title={item.itemName}
           bordered={false}
           extra={
-            <Button type="link" danger onClick={this.remove}>
+            <Button type="link" danger onClick={this.remove.bind(this, item.key, removeItems)}>
               Hapus
             </Button>
           }
